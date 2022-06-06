@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:random_activity/feature/random_activity/display/pages/legalese_page.dart';
+import 'package:random_activity/feature/random_activity/display/pages/random_activity_page.dart';
 
+import '../provider/selected_page_provider.dart';
 import 'bottom_bar_widget.dart';
 
-List<Widget> pages = const [
-  //Todo: Add the Pages
-
-  //BuildBody(),
-
-  //IdeaPage(),
-];
+List<Widget> pages = const [RandomActivityPage(), LegalesePage()];
 
 class SkeletonWidget extends StatelessWidget {
   const SkeletonWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Todo: Add the provider SelectedPageProvider
-
-    int selectedPage =
-        0; //= Provider.of<SelectedPageProvider>(context).selectedPage;
+    int selectedPage = Provider.of<SelectedPageProvider>(context).selectedPage;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,9 +24,8 @@ class SkeletonWidget extends StatelessWidget {
             onPressed: () async {
               //Todo: Add the provider changePage
 
-              // Provider.of<SelectedPageProvider>(context, listen: false)
-
-              //     .changePage(0);
+              Provider.of<SelectedPageProvider>(context, listen: false)
+                  .changePage(0);
 
               //Todo: Add the provider eitherFailureOrActivity.
 
