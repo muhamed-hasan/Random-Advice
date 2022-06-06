@@ -45,7 +45,7 @@ class RandomActivityWidget extends StatelessWidget {
               colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
               fit: BoxFit.cover,
               image: AssetImage(
-                'images/water_bg.jpg',
+                'images/water_bg.jpeg',
               ),
             ),
           ),
