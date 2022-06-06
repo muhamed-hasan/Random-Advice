@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_elevated_button.dart';
+import '../widgets/skeleton_widget.dart';
+
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
 
@@ -39,21 +42,21 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
               ),
-              // CustomElevatedButtonWidget(
-              //   buttonColor: Colors.white,
-              //   textColor: Colors.black,
-              //   iconColor: Colors.orangeAccent,
-              //   callback: () {
-              //     Provider.of<RandomActivityProvider>(context, listen: false)
-              //         .eitherFailureOrActivity();
+              CustomElevatedButtonWidget(
+                buttonColor: Colors.white,
+                textColor: Colors.black,
+                iconColor: Colors.orangeAccent,
+                callback: () {
+                  // Provider.of<RandomActivityProvider>(context, listen: false)
+                  //     .eitherFailureOrActivity();
 
-              //     Navigator.of(context).push(
-              //       MaterialPageRoute(
-              //         builder: (context) => const SkeletonWidget(),
-              //       ),
-              //     );
-              //   },
-              // )
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SkeletonWidget(),
+                    ),
+                  );
+                },
+              )
             ],
           )
         ],
