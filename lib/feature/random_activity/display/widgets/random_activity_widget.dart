@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/errors/faliures.dart';
 import '../../domain/entities/random_activity.dart';
-
-//Todo: Add the provider RandomActivityProvider
+import '../provider/random_activity_provier.dart';
 
 class RandomActivityWidget extends StatelessWidget {
   const RandomActivityWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //Todo: Add the provider RandomActivityProvider
+    RandomActivity? randomActivity =
+        Provider.of<RandomActivityProvider>(context).randomActivity;
+    print('=================================');
+    print(randomActivity);
 
-    RandomActivity? randomActivity = RandomActivity(
-        activity: 'Surf',
-        type: 'Cool',
-        participants: 1,
-        price: 1,
-        link: '',
-        accessibility: 1);
-
-    // = Provider.of<RandomActivityProvider>(context).randomActivity;
-
-    //Todo: Add the provider RandomActivityProvider
-
-    Failure? failure = CacheFailure(errorMessage: 'Todo');
-
-    // = Provider.of<RandomActivityProvider>(context).failure;
+    Failure? failure = Provider.of<RandomActivityProvider>(context).failure;
 
     if (randomActivity != null) {
       return Expanded(
@@ -107,7 +96,7 @@ class RandomActivityWidget extends StatelessWidget {
       return Expanded(
         child: Center(
           child: Text(
-            failure.errorMessage!,
+            failure.errorMessage,
             style: const TextStyle(fontSize: 20),
           ),
         ),

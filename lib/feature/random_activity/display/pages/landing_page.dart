@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/random_activity_provier.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/skeleton_widget.dart';
 
@@ -47,8 +49,8 @@ class LandingPage extends StatelessWidget {
                 textColor: Colors.black,
                 iconColor: Colors.orangeAccent,
                 callback: () {
-                  // Provider.of<RandomActivityProvider>(context, listen: false)
-                  //     .eitherFailureOrActivity();
+                  Provider.of<RandomActivityProvider>(context, listen: false)
+                      .eitherFailureOrRandomActivity();
 
                   Navigator.of(context).push(
                     MaterialPageRoute(

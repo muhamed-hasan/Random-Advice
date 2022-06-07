@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:random_activity/feature/random_activity/display/pages/legalese_page.dart';
 import 'package:random_activity/feature/random_activity/display/pages/random_activity_page.dart';
 
+import '../provider/random_activity_provier.dart';
 import '../provider/selected_page_provider.dart';
 import 'bottom_bar_widget.dart';
 
@@ -22,16 +23,11 @@ class SkeletonWidget extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              //Todo: Add the provider changePage
-
               Provider.of<SelectedPageProvider>(context, listen: false)
                   .changePage(0);
 
-              //Todo: Add the provider eitherFailureOrActivity.
-
-              // Provider.of<RandomActivityProvider>(context, listen: false)
-
-              //     .eitherFailureOrActivity();
+              Provider.of<RandomActivityProvider>(context, listen: false)
+                  .eitherFailureOrRandomActivity();
             },
             icon: const Icon(
               Icons.flash_on_outlined,
