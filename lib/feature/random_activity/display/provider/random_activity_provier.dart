@@ -4,9 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:random_activity/core/errors/faliures.dart';
+import 'package:random_activity/core/usecases/usecase.dart';
 import 'package:random_activity/feature/random_activity/data/datasources/random_activity_local.dart';
 import 'package:random_activity/feature/random_activity/data/repositories/random_activity_repo_imp.dart';
 import 'package:random_activity/feature/random_activity/domain/entities/random_activity.dart';
+import 'package:random_activity/feature/random_activity/domain/usecase/get_random_activity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/connections/network_info.dart';
@@ -20,7 +22,7 @@ class RandomActivityProvider extends ChangeNotifier {
     this.failure,
   });
 //
-  eitherFailureOrRandomActivity() async {
+  void eitherFailureOrRandomActivity() async {
     RandomActivityRepoImp repo = RandomActivityRepoImp(
       remoteDataSource: RandomActivityRemoteDataSourceImpl(Dio()),
       localDataSource: RandomActivityLocalDataSourceImpl(
@@ -28,9 +30,9 @@ class RandomActivityProvider extends ChangeNotifier {
       networkInfo:
           NetworkInfoImpl(dataConnectionChecker: DataConnectionChecker()),
     );
-    final failureOrActivity = await repo.getRandomActivity();
+    final failureOrActivity = await GetRandomActivity(repo).call(NoParams());
 
-    failureOrActivity.fold(
+    failureOrActivity?.fold(
       (newfailure) {
         failure = newfailure;
         randomActivity = null;
