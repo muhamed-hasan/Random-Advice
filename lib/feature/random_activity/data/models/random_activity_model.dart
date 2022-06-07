@@ -15,8 +15,8 @@ class RandomActivityModel extends RandomActivity {
         type: json['type'],
         link: json['link'],
         participants: json['participants'],
-        price: json['price'],
-        accessibility: json['accessibility']);
+        price: (json['price'] as num).toDouble(),
+        accessibility: (json['accessibility'] as num).toDouble());
   }
 
   Map<String, dynamic> toJson() {
